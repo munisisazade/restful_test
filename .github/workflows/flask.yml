@@ -13,4 +13,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: my && cd Restful/restful_test && git pull origin master && build-docker && docker-cleanup
+        script: whoami
