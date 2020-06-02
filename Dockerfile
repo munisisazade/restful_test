@@ -20,4 +20,4 @@ ENV PATH="/code/.venv/bin:$PATH"
 
 EXPOSE 5052
 
-CMD ["python","-u","run.py"]
+CMD [".venv/bin/python","-u","run.py"]
