@@ -13,7 +13,7 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        run: |
+        script: |
           my
           cd Restful/restful_test
           git pull origin master
