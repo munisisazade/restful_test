@@ -6,9 +6,10 @@ services:
     container_name: micro
     restart: "always"
     build: .
+    env_file: .env
     environment:
       - VIRTUAL_HOST=example.com
-      - VIRTUAL_PORT=5000
+      - VIRTUAL_PORT=5052
     volumes:
       - .:/code
-      
+
