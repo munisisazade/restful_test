@@ -4,6 +4,10 @@ FROM python:3.6
 # the application rather than buffering it.
 ENV PYTHONUNBUFFERED 1
 ENV APP_ROOT /code
+ENV APP_SETTINGS prod
+ENV HOST 0.0.0.0
+ENV PORT 5052
+ENV INSTANCE_NAME microservice
 # Copy in your requirements file
 ADD requirements.txt /requirements.txt
 
