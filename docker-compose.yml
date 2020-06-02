@@ -10,6 +10,8 @@ services:
     environment:
       - VIRTUAL_HOST=rest.mpy.az
       - VIRTUAL_PORT=5052
+    ports:
+      - "5052:5052"
     volumes:
       - .:/code
 
