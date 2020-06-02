@@ -14,8 +14,7 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
         script: |
-          my
-          cd Restful/restful_test
+          cd ${{ secrets.PATH }}
           git pull origin master
           build-docker
           docker-cleanup
