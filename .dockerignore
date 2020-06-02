@@ -1,0 +1,6 @@
+*
+!app/
+!instance/
+!requirements.txt
+!run.py
+!.env
