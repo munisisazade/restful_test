@@ -6,7 +6,6 @@ services:
     container_name: micro
     restart: "always"
     build: .
-    env_file: .env
     environment:
       - VIRTUAL_HOST=rest.mpy.az
       - VIRTUAL_PORT=5052
@@ -15,3 +14,7 @@ services:
     volumes:
       - .:/code
 
+networks:
+  default:
+    external:
+      name: nginx-proxy
