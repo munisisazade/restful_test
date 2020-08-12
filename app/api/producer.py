@@ -24,6 +24,27 @@ def default_get():
     })
 
 
+@micro_api.route('/api/v1/info/test/rest/<pin>', methods=['GET'])
+def info_api_get(pin):
+    if not "Authorization" in request.headers:
+        return jsonify({
+            "error": "Authorization required"
+        }), 403
+    if not pin or pin == "":
+        jsonify({
+            "error": "Pin not found !!!"
+        }), 404
+    if request.headers["Authorization"] == "Token testing12345":
+        return jsonify({
+            "data": {
+                "pin": pin
+            }
+        })
+    return jsonify({
+        "error": "Authorization required"
+    }), 403
+
+
 @micro_api.route('/api/v1/example2/<id>', methods=['GET'])
 def example_two_get(id):
     if not id or id == "":
