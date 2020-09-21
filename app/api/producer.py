@@ -1,7 +1,19 @@
+import requests
 from flask import Blueprint, request, jsonify
 
 micro_api = Blueprint('micro_api', __name__)
 
+
+@micro_api.route('/api/v1/rest/body', methods=['POST'])
+def rest_body_example():
+    data = request.data
+    name = data["name"]
+    surname = data["surname"]
+    req = requests.get("https://cat-fact.herokuapp.com/facts/random")
+    response = req.json()
+    return {
+        "data": response["text"]
+    }
 
 @micro_api.route('/api/v1/example/get', methods=['GET'])
 def default_get():
