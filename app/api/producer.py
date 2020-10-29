@@ -51,6 +51,30 @@ def array_response_example():
                 "name": "Iribuynuzlu"
             },
             "id": 1432
+        },
+        {
+            "nickName": "Narinci",
+            "registryNo": "253524",
+            "birthDate": "2015-05-22T14:56:29.000Z",
+            "animalGender": "ERKEK",
+            "animalHistory": [],
+            "animalOriginType": {
+                "id": 1,
+                "name": "Tebii mayalanma"
+            },
+            "animalSort": {
+                "id": 7,
+                "name": "Teyin edilmeyib"
+            },
+            "animalType": {
+                "id": 2,
+                "name": "Inek"
+            },
+            "animalCategory": {
+                "id": 2,
+                "name": "Iribuynuzlu"
+            },
+            "id": 2533
         }
     ]
 
