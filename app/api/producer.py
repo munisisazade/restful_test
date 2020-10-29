@@ -20,10 +20,37 @@ def rest_body_example():
 def array_response_example():
     return [
         {
-            "name": "test 1"
-        },
-        {
-            "name": "test 2"
+            "nickName": "Qirmizi",
+            "registryNo": "759691",
+            "birthDate": "2015-05-22T14:56:29.000Z",
+            "animalGender": "DİŞİ",
+            "animalHistory": [
+                {
+                    "id": 45324,
+                    "date": "2015-05-22T14:56:29.000Z",
+                    "animalStatus": {
+                        "id": 32,
+                        "name": "SMM-e muraciet edildi"
+                    }
+                }
+            ],
+            "animalOriginType": {
+                "id": 1,
+                "name": "Tebii mayalanma"
+            },
+            "animalSort": {
+                "id": 7,
+                "name": "Teyin edilmeyib"
+            },
+            "animalType": {
+                "id": 2,
+                "name": "Inek"
+            },
+            "animalCategory": {
+                "id": 2,
+                "name": "Iribuynuzlu"
+            },
+            "id": 1432
         }
     ]
 
