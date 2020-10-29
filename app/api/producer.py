@@ -57,7 +57,16 @@ def array_response_example():
             "registryNo": "253524",
             "birthDate": "2015-05-22T14:56:29.000Z",
             "animalGender": "ERKEK",
-            "animalHistory": [],
+            "animalHistory": [
+                {
+                    "id": 2352,
+                    "date": "2015-05-22T14:56:29.000Z",
+                    "animalStatus": {
+                        "id": 345,
+                        "name": "SMM-e muraciet edildi"
+                    }
+                }
+            ],
             "animalOriginType": {
                 "id": 1,
                 "name": "Tebii mayalanma"
