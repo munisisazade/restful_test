@@ -15,6 +15,19 @@ def rest_body_example():
         "data": response["text"]
     }
 
+
+@micro_api.route('/api/v1/array/response', methods=['GET'])
+def array_response_example():
+    return [
+        {
+            "name": "test 1"
+        },
+        {
+            "name": "test 2"
+        }
+    ]
+
+
 @micro_api.route('/api/v1/example/get', methods=['GET'])
 def default_get():
     return jsonify({
