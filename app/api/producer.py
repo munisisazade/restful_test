@@ -18,74 +18,87 @@ def rest_body_example():
 
 @micro_api.route('/api/v1/array/response', methods=['GET'])
 def array_response_example():
-    return [
-        {
-            "nickName": "Qirmizi",
-            "registryNo": "759691",
-            "birthDate": "2015-05-22T14:56:29.000Z",
-            "animalGender": "DİŞİ",
-            "animalHistory": [
-                {
-                    "id": 45324,
-                    "date": "2015-05-22T14:56:29.000Z",
-                    "animalStatus": {
-                        "id": 32,
-                        "name": "SMM-e muraciet edildi"
+    if request.headers['Authorization'] == 'Basic YWdyYXJfc2lnb3J0YTphZ3Jhcl9zaWdvcnRhXyQuITIwMjA=':
+        return [
+            {
+                "nickName": "Qırnızı",
+                "registryNo": "759691",
+                "birthDate": "2014-06-27T04:00:00.000+00:00",
+                "animalGender": "DİŞİ",
+                "animalHistory": [
+                    {
+                        "id": 143931,
+                        "date": "2020-06-28T01:39:17.877+00:00",
+                        "animalStatus": {
+                            "id": 8,
+                            "name": "SMM-ə müraciət edildi"
+                        }
+                    },
+                    {
+                        "id": 249011,
+                        "date": "2020-10-28T20:22:01.540+00:00",
+                        "animalStatus": {
+                            "id": 8,
+                            "name": "SMM-ə müraciət edildi"
+                        }
                     }
-                }
-            ],
-            "animalOriginType": {
-                "id": 1,
-                "name": "Tebii mayalanma"
+                ],
+                "animalOriginType": {
+                    "id": 2,
+                    "name": "Təbii mayalanma"
+                },
+                "animalSort": {
+                    "id": 7,
+                    "name": "Təyin edilməyib"
+                },
+                "animalType": {
+                    "id": 1,
+                    "name": "İnək"
+                },
+                "animalCategory": {
+                    "id": 1,
+                    "name": "İribuynuzlu"
+                },
+                "id": 143120
             },
-            "animalSort": {
-                "id": 7,
-                "name": "Teyin edilmeyib"
-            },
-            "animalType": {
-                "id": 2,
-                "name": "Inek"
-            },
-            "animalCategory": {
-                "id": 2,
-                "name": "Iribuynuzlu"
-            },
-            "id": 1432
-        },
-        {
-            "nickName": "Narinci",
-            "registryNo": "253524",
-            "birthDate": "2015-05-22T14:56:29.000Z",
-            "animalGender": "ERKEK",
-            "animalHistory": [
-                {
-                    "id": 2352,
-                    "date": "2015-05-22T14:56:29.000Z",
-                    "animalStatus": {
-                        "id": 345,
-                        "name": "SMM-e muraciet edildi"
+            {
+                "nickName": "Buzov_144245",
+                "registryNo": "70183",
+                "birthDate": "2020-06-16T04:00:00.000+00:00",
+                "animalGender": "ERKƏK",
+                "animalHistory": [
+                    {
+                        "id": 145204,
+                        "date": "2020-06-29T19:37:08.097+00:00",
+                        "animalStatus": {
+                            "id": 7,
+                            "name": "Baytara müraciət edildi"
+                        }
                     }
-                }
-            ],
-            "animalOriginType": {
-                "id": 1,
-                "name": "Tebii mayalanma"
-            },
-            "animalSort": {
-                "id": 7,
-                "name": "Teyin edilmeyib"
-            },
-            "animalType": {
-                "id": 2,
-                "name": "Inek"
-            },
-            "animalCategory": {
-                "id": 2,
-                "name": "Iribuynuzlu"
-            },
-            "id": 2533
-        }
-    ]
+                ],
+                "animalOriginType": {
+                    "id": 2,
+                    "name": "Təbii mayalanma"
+                },
+                "animalSort": {
+                    "id": 7,
+                    "name": "Təyin edilməyib"
+                },
+                "animalType": {
+                    "id": 1,
+                    "name": "İnək"
+                },
+                "animalCategory": {
+                    "id": 1,
+                    "name": "İribuynuzlu"
+                },
+                "id": 144245
+            }
+        ]
+    else:
+        return {
+                   "error": "Token verification failed"
+               }, 403
 
 
 @micro_api.route('/api/v1/example/get', methods=['GET'])
