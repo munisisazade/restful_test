@@ -18,7 +18,7 @@ def rest_body_example():
 
 @micro_api.route('/api/v1/array/response', methods=['GET'])
 def array_response_example():
-    if request.headers['Authorization'] == 'Basic YWdyYXJfc2lnb3J0YTphZ3Jhcl9zaWdvcnRhXyQuITIwMjA=':
+    if request.headers.get('Authorization', None) == 'Basic YWdyYXJfc2lnb3J0YTphZ3Jhcl9zaWdvcnRhXyQuITIwMjA=':
         return [
             {
                 "nickName": "Qırnızı",
