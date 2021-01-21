@@ -15,6 +15,12 @@ def rest_body_example():
         "data": response["text"]
     }
 
+@micro_api.route('/api/v1/header/example', methods=['GET'])
+def rest_header_checker():
+    return {
+        "header": request.headers
+    }
+
 
 @micro_api.route('/api/v1/array/response', methods=['GET'])
 def array_response_example():
