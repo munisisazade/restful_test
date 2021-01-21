@@ -18,7 +18,7 @@ def rest_body_example():
 @micro_api.route('/api/v1/header/example', methods=['GET'])
 def rest_header_checker():
     return {
-        "header": request.headers
+        "header": str(request.headers)
     }
 
 
