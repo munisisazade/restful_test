@@ -26,7 +26,7 @@ def rest_header_checker():
 @micro_api.route('/api/v1/body/example', methods=['POST'])
 def rest_body_checker():
     return {
-        "request_data": str(request.json)
+        "request_data": str(request.data)
     }
 
 
