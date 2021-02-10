@@ -16,6 +16,18 @@ def rest_body_example():
     }
 
 
+@micro_api.route('/api/v1/babat/service/{id}', methods=['POST'])
+def rest_babat_service(id):
+    body = str(request.data)
+    path_parameter = id
+    headers = str(request.headers)
+    return {
+        "body": body,
+        "path_parameter": path_parameter,
+        "headers": headers
+    }
+
+
 @micro_api.route('/api/v1/header/example', methods=['GET'])
 def rest_header_checker():
     return {
