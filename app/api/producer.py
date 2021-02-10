@@ -19,12 +19,14 @@ def rest_body_example():
 @micro_api.route('/api/v1/babat/service/<id>', methods=['POST'])
 def rest_babat_service(id):
     body = str(request.data)
+    query_parameter = str(request.args)
     path_parameter = id
     headers = str(request.headers)
     return {
         "body": body,
         "path_parameter": path_parameter,
-        "headers": headers
+        "headers": headers,
+        "query_parameter": query_parameter
     }
 
 
