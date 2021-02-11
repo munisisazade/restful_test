@@ -1,3 +1,4 @@
+import json
 import requests
 from flask import Blueprint, request, jsonify, Response
 
@@ -22,12 +23,12 @@ def rest_babat_service(id):
     query_parameter = str(request.args)
     path_parameter = id
     headers = str(request.headers)
-    resp = Response({
+    resp = Response(response=json.dumps({
         "body": body,
         "path_parameter": path_parameter,
         "headers": headers,
         "query_parameter": query_parameter
-    },mimetype='application/json')
+    }),mimetype='application/json')
     resp.headers['Header1'] = request.headers.get('Header1')
     resp.headers['Header2'] = request.headers.get('Header2')
     return resp
