@@ -1,5 +1,5 @@
 import requests
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, Response
 
 micro_api = Blueprint('micro_api', __name__)
 
@@ -22,12 +22,15 @@ def rest_babat_service(id):
     query_parameter = str(request.args)
     path_parameter = id
     headers = str(request.headers)
-    return {
+    resp = Response({
         "body": body,
         "path_parameter": path_parameter,
         "headers": headers,
         "query_parameter": query_parameter
-    }
+    },mimetype='application/json')
+    resp.headers['Header1'] = request.headers.get('Header1')
+    resp.headers['Header2'] = request.headers.get('Header2')
+    return resp
 
 
 @micro_api.route('/api/v1/header/example', methods=['GET'])
