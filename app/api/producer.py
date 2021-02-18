@@ -28,7 +28,7 @@ def rest_babat_service(id):
         "path_parameter": path_parameter,
         "headers": headers,
         "query_parameter": query_parameter
-    }),mimetype='application/json')
+    }), mimetype='application/json')
     resp.headers['Header1'] = request.headers.get('Header1')
     resp.headers['Header2'] = request.headers.get('Header2')
     return resp
@@ -192,6 +192,33 @@ def example_two_get(id):
                 "userId": 1,
             }
         }]
+    })
+
+
+@micro_api.route('/api/v1/swagger/example1', methods=['GET'])
+def besit_example1():
+    return jsonify([
+        {
+            "key": "value",
+            "object": {
+                "v": "b"
+            },
+            "array": [
+                {
+                    "name": "value"
+                }
+            ]
+        }
+    ])
+
+
+@micro_api.route('/api/v1/swagger/example2', methods=['GET'])
+def besit_example2():
+    return jsonify({
+        'a': [{'a1': 'x'}],
+        'b': {
+            'b1': [{'b11': 'value'}]
+        }
     })
 
 
