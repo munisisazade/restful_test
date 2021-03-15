@@ -34,6 +34,67 @@ def rest_babat_service(id):
     return resp
 
 
+@micro_api.route('/api/v1/getActiveContractsDetailByPin', methods=['POST'])
+def rest_labor_contracts():
+    body = request.data
+    headers = request.headers
+    pin = body.get("SEARCH_PIN", False)
+    key = headers.get('Key')
+    if key:
+        if key != '758gf9hjdx9024ftg':
+            return {
+                "status": {
+                    "code": 301,
+                    "description": "Autentifikasiya xətası.",
+                    "exception": None,
+                    "transaction": None,
+                    "timeStamp": "2021-03-15T16:46:15.8135075+04:00",
+                    "requestDuration": 0
+                },
+                "data": None
+            }
+
+    if pin:
+        if pin == "F9738SA":
+            return {
+                "status": {
+                    "code": 200,
+                    "description": "Uğurlu.",
+                    "exception": None,
+                    "transaction": "BD92AD6D3D8EA567E05302131DACAEB0",
+                    "timeStamp": "2021-03-15T16:44:29.9587069+04:00",
+                    "requestDuration": 1278.9898
+                },
+                'data': [{
+                    'name': 'SUCCESS'
+                }]
+            }
+        else:
+            return {
+                "status": {
+                    "code": 201,
+                    "description": "Uğurlu (nəticə tapılmadı).",
+                    "exception": None,
+                    "transaction": "BD92AD6D3D8FA567E05302131DACAEB0",
+                    "timeStamp": "2021-03-15T16:45:28.8735055+04:00",
+                    "requestDuration": 140.6385
+                },
+                "data": []
+            }
+    else:
+        return {
+            "status": {
+                "code": 400,
+                "description": "Kontent xətası.",
+                "exception": None,
+                "transaction": "BD92AD6D3D86A567E05302131DACAEB0",
+                "timeStamp": "2021-03-15T16:26:32.1502693+04:00",
+                "requestDuration": 0
+            },
+            'data': []
+        }
+
+
 @micro_api.route('/api/v1/header/example', methods=['GET'])
 def rest_header_checker():
     return {
