@@ -34,6 +34,49 @@ def rest_babat_service(id):
     return resp
 
 
+@micro_api.route('/api/v1/getCertificatesByPin', methods=['GET'])
+def get_certificates_by_pin():
+    code = request.args.get('code')
+    if code == 'GX9ZZvd':
+        return {
+            "Status": 200,
+            "Description": "OK",
+            "Exception": None,
+            "Timestamp": "2021-04-29 07:27:05",
+            "Data": {
+                "DataVals": [
+                    {
+                        "name": "SDASDA",
+                        "surname": "DFGDFG",
+                        "patronymic": "ASDAGSDF",
+                    }
+                ]
+            }
+        }
+    elif len(code) != 7:
+        return {
+            "Status": 400,
+            "Description": "BadRequest",
+            "Exception": {
+                "Code": 4000,
+                "Message": "Code have 7 symbols"
+            },
+            "Timestamp": "2021-04-29 07:28:28",
+            "Data": None
+        }
+    else:
+        return {
+            "Status": 400,
+            "Description": "BadRequest",
+            "Exception": {
+                "Code": 5000,
+                "Message": "Data not found"
+            },
+            "Timestamp": "2021-04-29 07:29:06",
+            "Data": None
+        }
+
+
 @micro_api.route('/api/v1/getActiveContractsDetailByPin', methods=['POST'])
 def rest_labor_contracts():
     body = request.data
