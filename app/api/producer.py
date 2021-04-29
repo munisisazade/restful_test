@@ -62,7 +62,9 @@ def get_certificates_by_pin():
                 "Message": "Code have 7 symbols"
             },
             "Timestamp": "2021-04-29 07:28:28",
-            "Data": None
+            "Data": {
+                "DataVals": None
+            }
         }
     else:
         return {
