@@ -75,7 +75,9 @@ def get_certificates_by_pin():
                 "Message": "Data not found"
             },
             "Timestamp": "2021-04-29 07:29:06",
-            "Data": None
+            "Data": {
+                "DataVals": None
+            }
         }
 
 
