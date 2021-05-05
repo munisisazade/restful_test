@@ -693,6 +693,32 @@ def example_soap_service():
   </wsdl:service>
 </wsdl:definitions>""", mimetype="text/xml")
     else:
-        return Response(response="""
-        <Name>Test</Name>
-        """, mimetype="text/xml")
+        return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
+<root>
+   <GetAppinfoByPINResult>
+      <Applications>
+         <Item>
+            <element>
+               <CountryCode>99</CountryCode>
+               <CountryName>Türkiyə Respublikası</CountryName>
+               <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
+               <DecisionNumber>23-23-364</DecisionNumber>
+               <EducationLevel>10</EducationLevel>
+               <EducationLevelName>Bakalavriat</EducationLevelName>
+               <Fullname>Mənsimli Fərid Qurban oğlu</Fullname>
+               <ICertificateNumber>022802</ICertificateNumber>
+               <PIN>627CHBU</PIN>
+               <SpecialtyCode>178</SpecialtyCode>
+               <SpecialtyName>Menecment</SpecialtyName>
+               <TCertificateNumber>023342</TCertificateNumber>
+               <UniversitetCode>174</UniversitetCode>
+               <UniversitetName>Ardahan Universiteti</UniversitetName>
+            </element>
+         </Item>
+      </Applications>
+      <Status>
+         <Code>200</Code>
+         <Description>Uğurlu.</Description>
+      </Status>
+   </GetAppinfoByPINResult>
+</root>""", mimetype="text/xml")
