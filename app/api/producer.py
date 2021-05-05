@@ -706,13 +706,13 @@ def example_soap_service():
                <EducationLevel>10</EducationLevel>
                <EducationLevelName>Bakalavriat</EducationLevelName>
                <Fullname>Mənsimli Fərid Qurban oğlu</Fullname>
-               <ICertificateNumber>022802</ICertificateNumber>
-               <PIN>627CHBU</PIN>
+               <ICertificateNumber>sdfsdf</ICertificateNumber>
+               <PIN>asfdsdfsdf</PIN>
                <SpecialtyCode>178</SpecialtyCode>
                <SpecialtyName>Menecment</SpecialtyName>
-               <TCertificateNumber>023342</TCertificateNumber>
-               <UniversitetCode>174</UniversitetCode>
-               <UniversitetName>Ardahan Universiteti</UniversitetName>
+               <TCertificateNumber>sdfsdf</TCertificateNumber>
+               <UniversitetCode>sdfsdf</UniversitetCode>
+               <UniversitetName>Ardahan sdfsdf</UniversitetName>
             </element>
          </Item>
       </Applications>
