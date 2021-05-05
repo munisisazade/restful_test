@@ -541,7 +541,7 @@ def example_five():
     pass
 
 
-@micro_api.route('/api/v1/soap/example.asmx', methods=['POST'])
+@micro_api.route('/api/v1/soap/example.asmx', methods=['GET','POST'])
 def example_soap_service():
     if request.method == "GET":
         return Response(response="""
