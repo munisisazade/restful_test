@@ -717,12 +717,12 @@ def example_soap_service():
              <Item>
                 <element>
                    <CountryCode>99</CountryCode>
-                   <CountryName>Türkiyə Respublikası</CountryName>
+                   <CountryName>dfhdsf df hgdfhfh</CountryName>
                    <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
                    <DecisionNumber>23-23-364</DecisionNumber>
                    <EducationLevel>10</EducationLevel>
                    <EducationLevelName>Bakalavriat</EducationLevelName>
-                   <Fullname>Mənsimli Fərid Qurban oğlu</Fullname>
+                   <Fullname>dfg sdgfdfsgfgdsfg</Fullname>
                    <ICertificateNumber>sdfsdf</ICertificateNumber>
                    <PIN>asfdsdfsdf</PIN>
                    <SpecialtyCode>sdfsdf</SpecialtyCode>
