@@ -693,6 +693,7 @@ def example_soap_service():
   </wsdl:service>
 </wsdl:definitions>""", mimetype="text/xml")
     else:
+        print(request.data)
         return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
 <soapenv:Header/>
