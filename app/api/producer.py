@@ -544,8 +544,7 @@ def example_five():
 @micro_api.route('/api/v1/soap/example.asmx', methods=['GET','POST'])
 def example_soap_service():
     if request.method == "GET":
-        return Response(response="""
-        <?xml version="1.0" encoding="utf-8"?>
+        return Response(response="""<?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
@@ -692,8 +691,7 @@ def example_soap_service():
       <soap12:address location="https://rest.mpy.az/api/v1/soap/example.asmx" />
     </wsdl:port>
   </wsdl:service>
-</wsdl:definitions>
-        """, mimetype="text/xml")
+</wsdl:definitions>""", mimetype="text/xml")
     else:
         return Response(response="""
         <Name>Test</Name>
