@@ -1,5 +1,6 @@
 import json
 import requests
+import random
 from flask import Blueprint, request, jsonify, Response
 
 micro_api = Blueprint('micro_api', __name__)
@@ -541,7 +542,7 @@ def example_five():
     pass
 
 
-@micro_api.route('/api/v1/soap/example.asmx', methods=['GET','POST'])
+@micro_api.route('/api/v1/soap/example.asmx', methods=['GET', 'POST'])
 def example_soap_service():
     if request.method == "GET":
         return Response(response="""<?xml version="1.0" encoding="utf-8"?>
@@ -693,35 +694,49 @@ def example_soap_service():
   </wsdl:service>
 </wsdl:definitions>""", mimetype="text/xml")
     else:
-        return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-<soapenv:Header/>
-<soapenv:Body>
-   <GetAppinfoByPINResult>
-      <Applications>
-         <Item>
-            <element>
-               <CountryCode>99</CountryCode>
-               <CountryName>Türkiyə Respublikası</CountryName>
-               <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
-               <DecisionNumber>23-23-364</DecisionNumber>
-               <EducationLevel>10</EducationLevel>
-               <EducationLevelName>Bakalavriat</EducationLevelName>
-               <Fullname>Mənsimli Fərid Qurban oğlu</Fullname>
-               <ICertificateNumber>sdfsdf</ICertificateNumber>
-               <PIN>asfdsdfsdf</PIN>
-               <SpecialtyCode>sdfsdf</SpecialtyCode>
-               <SpecialtyName>Menecment</SpecialtyName>
-               <TCertificateNumber>sdfsdf</TCertificateNumber>
-               <UniversitetCode>sdfsdf</UniversitetCode>
-               <UniversitetName>Ardahan sdfsdf</UniversitetName>
-            </element>
-         </Item>
-      </Applications>
-      <Status>
-         <Code>200</Code>
-         <Description>Uğurlu.</Description>
-      </Status>
-   </GetAppinfoByPINResult>
-   </soapenv:Body>
-</soapenv:Envelope>""", mimetype="text/xml")
+        if random.randint(0, 1):
+            return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
+                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                   <GetAppinfoByPINResult>
+                      <Status>
+                         <Code>402</Code>
+                         <Description>fdgdfgfdgdfgdf</Description>
+                      </Status>
+                   </GetAppinfoByPINResult>
+                   </soapenv:Body>
+                </soapenv:Envelope>""", mimetype="text/xml")
+        else:
+            return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
+    <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header/>
+    <soapenv:Body>
+       <GetAppinfoByPINResult>
+          <Applications>
+             <Item>
+                <element>
+                   <CountryCode>99</CountryCode>
+                   <CountryName>Türkiyə Respublikası</CountryName>
+                   <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
+                   <DecisionNumber>23-23-364</DecisionNumber>
+                   <EducationLevel>10</EducationLevel>
+                   <EducationLevelName>Bakalavriat</EducationLevelName>
+                   <Fullname>Mənsimli Fərid Qurban oğlu</Fullname>
+                   <ICertificateNumber>sdfsdf</ICertificateNumber>
+                   <PIN>asfdsdfsdf</PIN>
+                   <SpecialtyCode>sdfsdf</SpecialtyCode>
+                   <SpecialtyName>Menecment</SpecialtyName>
+                   <TCertificateNumber>sdfsdf</TCertificateNumber>
+                   <UniversitetCode>sdfsdf</UniversitetCode>
+                   <UniversitetName>Ardahan sdfsdf</UniversitetName>
+                </element>
+             </Item>
+          </Applications>
+          <Status>
+             <Code>200</Code>
+             <Description>Uğurlu.</Description>
+          </Status>
+       </GetAppinfoByPINResult>
+       </soapenv:Body>
+    </soapenv:Envelope>""", mimetype="text/xml")
