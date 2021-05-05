@@ -540,3 +540,188 @@ def example_four():
 def example_five():
     pass
 
+
+@micro_api.route('/api/v1/soap/example.asmx', methods=['GET','POST'])
+def example_soap_service():
+    if request.method == "GET":
+        return Response(response="""<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetAppinfoByPIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppinfoByPINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppinfoByPINResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Response">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="tns:Status" />
+          <s:element minOccurs="0" maxOccurs="1" name="Applications" type="tns:ArrayOfItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Status">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:Item" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Item">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fullname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DecisionNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DecisionDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="ICertificateNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TCertificateNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ECertificateNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CountryCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UniversitetCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniversitetName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EducationLevel" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EducationLevelName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SpecialtyCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpecialtyName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAppinfoByFullname">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RequestKey" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Patronymic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BirthDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAppinfoByFullnameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAppinfoByFullnameResult" type="tns:Response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAppinfoByPINSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppinfoByPIN" />
+  </wsdl:message>
+  <wsdl:message name="GetAppinfoByPINSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppinfoByPINResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAppinfoByFullnameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAppinfoByFullname" />
+  </wsdl:message>
+  <wsdl:message name="GetAppinfoByFullnameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAppinfoByFullnameResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IntegrationsSoap">
+    <wsdl:operation name="GetAppinfoByPIN">
+      <wsdl:input message="tns:GetAppinfoByPINSoapIn" />
+      <wsdl:output message="tns:GetAppinfoByPINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAppinfoByFullname">
+      <wsdl:input message="tns:GetAppinfoByFullnameSoapIn" />
+      <wsdl:output message="tns:GetAppinfoByFullnameSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IntegrationsSoap" type="tns:IntegrationsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAppinfoByPIN">
+      <soap:operation soapAction="http://tempuri.org/GetAppinfoByPIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppinfoByFullname">
+      <soap:operation soapAction="http://tempuri.org/GetAppinfoByFullname" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IntegrationsSoap12" type="tns:IntegrationsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAppinfoByPIN">
+      <soap12:operation soapAction="http://tempuri.org/GetAppinfoByPIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAppinfoByFullname">
+      <soap12:operation soapAction="http://tempuri.org/GetAppinfoByFullname" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Integrations">
+    <wsdl:port name="IntegrationsSoap" binding="tns:IntegrationsSoap">
+      <soap:address location="https://rest.mpy.az/api/v1/soap/example.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IntegrationsSoap12" binding="tns:IntegrationsSoap12">
+      <soap12:address location="https://rest.mpy.az/api/v1/soap/example.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>""", mimetype="text/xml")
+    else:
+        return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+<soapenv:Header/>
+<soapenv:Body>
+   <GetAppinfoByPINResult>
+      <Applications>
+         <Item>
+            <element>
+               <CountryCode>99</CountryCode>
+               <CountryName>Türkiyə Respublikası</CountryName>
+               <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
+               <DecisionNumber>23-23-364</DecisionNumber>
+               <EducationLevel>10</EducationLevel>
+               <EducationLevelName>Bakalavriat</EducationLevelName>
+               <Fullname>Mənsimli Fərid Qurban oğlu</Fullname>
+               <ICertificateNumber>sdfsdf</ICertificateNumber>
+               <PIN>asfdsdfsdf</PIN>
+               <SpecialtyCode>sdfsdf</SpecialtyCode>
+               <SpecialtyName>Menecment</SpecialtyName>
+               <TCertificateNumber>sdfsdf</TCertificateNumber>
+               <UniversitetCode>sdfsdf</UniversitetCode>
+               <UniversitetName>Ardahan sdfsdf</UniversitetName>
+            </element>
+         </Item>
+      </Applications>
+      <Status>
+         <Code>200</Code>
+         <Description>Uğurlu.</Description>
+      </Status>
+   </GetAppinfoByPINResult>
+   </soapenv:Body>
+</soapenv:Envelope>""", mimetype="text/xml")
