@@ -541,7 +541,7 @@ def example_four():
 def example_five():
     pass
 
-@micro_api.route('/api/v1/fake/json', methods=['POST'])
+@micro_api.route('/api/v1/fake/json', methods=['GET'])
 def fake_json_response():
     data = json.dumps({
         "name": "test",
