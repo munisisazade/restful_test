@@ -541,6 +541,14 @@ def example_four():
 def example_five():
     pass
 
+@micro_api.route('/api/v1/fake/json', methods=['POST'])
+def fake_json_response():
+    data = json.dumps({
+        "name": "test",
+        "surname": "it is not json"
+    })
+    return Response(response=data, mimetype="text/plain")
+
 
 @micro_api.route('/api/v1/soap/example.asmx', methods=['GET', 'POST'])
 def example_soap_service():
@@ -740,3 +748,5 @@ def example_soap_service():
        </GetAppinfoByPINResult>
        </soapenv:Body>
     </soapenv:Envelope>""", mimetype="text/xml")
+
+
