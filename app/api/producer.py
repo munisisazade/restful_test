@@ -748,18 +748,17 @@ def example_soap_service():
 
 
 
-@micro_api.route('/api/v1/soap/error.asmx', methods=['GET'])
+@micro_api.route('/api/v1/soap/error.asmx', methods=['GET', 'POST'])
 def example_soap_error():
-    if request.method == "GET":
-        return Response(response="""<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
-            <env:Body>
-                <env:Fault>
-                    <env:Code>
-                        <env:Value>303</env:Value>
-                    </env:Code>
-                    <env:Reason>
-                        <env:Text>Incorrect Privileges: Please check that the user has the correct privileges to run this service</env:Text>
-                    </env:Reason>
-                </env:Fault>
-            </env:Body>
-        </env:Envelope>""", mimetype="text/xml"), 303
+    return Response(response="""<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
+        <env:Body>
+            <env:Fault>
+                <env:Code>
+                    <env:Value>303</env:Value>
+                </env:Code>
+                <env:Reason>
+                    <env:Text>Incorrect Privileges: Please check that the user has the correct privileges to run this service</env:Text>
+                </env:Reason>
+            </env:Fault>
+        </env:Body>
+    </env:Envelope>""", mimetype="text/xml"), 303
