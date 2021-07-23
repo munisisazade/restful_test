@@ -554,11 +554,69 @@ def example_soap_service():
 <wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:element name="GetAppinfoByPIN">
+      <s:element name="request">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RequestKey" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="PIN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Act" type="tns:Act" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Act">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Child" type="tns:Child" />
+            <s:element minOccurs="0" maxOccurs="1" name="Contacts" type="tns:Contacts" />
+            <s:element minOccurs="0" maxOccurs="1" name="Father" type="tns:Father" />
+            <s:element minOccurs="0" maxOccurs="1" name="MarriageFullActNumber" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mother" type="tns:Mother" />
+            <s:element minOccurs="0" maxOccurs="1" name="OfficeCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Vesks" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Child">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Contacts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="tns:Contact" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Contact">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Father">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="JobPlace" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="JobPosition" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NationId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mother">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Education" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="JobPlace" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="JobPosition" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NationId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -626,7 +684,7 @@ def example_soap_service():
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetAppinfoByPINSoapIn">
-    <wsdl:part name="parameters" element="tns:GetAppinfoByPIN" />
+    <wsdl:part name="parameters" element="tns:request" />
   </wsdl:message>
   <wsdl:message name="GetAppinfoByPINSoapOut">
     <wsdl:part name="parameters" element="tns:GetAppinfoByPINResponse" />
@@ -699,21 +757,7 @@ def example_soap_service():
   </wsdl:service>
 </wsdl:definitions>""", mimetype="text/xml")
     else:
-        if random.randint(0, 1):
-            return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
-                <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-                <soapenv:Header/>
-                <soapenv:Body>
-                   <GetAppinfoByPINResult>
-                      <Status>
-                         <Code>402</Code>
-                         <Description>fdgdfgfdgdfgdf</Description>
-                      </Status>
-                   </GetAppinfoByPINResult>
-                   </soapenv:Body>
-                </soapenv:Envelope>""", mimetype="text/xml")
-        else:
-            return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
+        return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
     <soapenv:Header/>
     <soapenv:Body>
