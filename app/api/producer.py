@@ -561,65 +561,53 @@ def example_soap_service():
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="Act">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Child" type="tns:Child" />
-            <s:element minOccurs="0" maxOccurs="1" name="Contacts" type="tns:Contacts" />
-            <s:element minOccurs="0" maxOccurs="1" name="Father" type="tns:Father" />
-            <s:element minOccurs="0" maxOccurs="1" name="MarriageFullActNumber" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="Mother" type="tns:Mother" />
-            <s:element minOccurs="0" maxOccurs="1" name="OfficeCode" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="Vesks" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Child">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Contacts">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="tns:Contact" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Contact">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Father">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Education" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="JobPlace" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="JobPosition" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="NationId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:element name="Mother">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Education" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="JobPlace" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="JobPosition" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="NationId" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
+      <s:complexType name="Act">
+         <s:sequence>
+           <s:element minOccurs="0" maxOccurs="1" name="Child" type="tns:Child" />
+           <s:element minOccurs="0" maxOccurs="1" name="Contacts" type="tns:Contacts" />
+           <s:element minOccurs="0" maxOccurs="1" name="Father" type="tns:Father" />
+           <s:element minOccurs="0" maxOccurs="1" name="MarriageFullActNumber" type="s:int" />
+           <s:element minOccurs="0" maxOccurs="1" name="Mother" type="tns:Mother" />
+           <s:element minOccurs="0" maxOccurs="1" name="OfficeCode" type="s:int" />
+           <s:element minOccurs="0" maxOccurs="1" name="Vesks" type="s:string" />
+         </s:sequence>
+      </s:complexType>
+      <s:complexType name="Child">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Contacts">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Contact" nillable="true" type="tns:Contact" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Contact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Father">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Education" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobPlace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobPosition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NationId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Mother">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Education" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobPlace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobPosition" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NationId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Pin" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="GetAppinfoByPINResponse">
         <s:complexType>
           <s:sequence>
