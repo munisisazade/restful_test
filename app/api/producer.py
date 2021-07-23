@@ -750,31 +750,33 @@ def example_soap_service():
     <soapenv:Header/>
     <soapenv:Body>
        <GetAppinfoByPINResponse>
-          <Applications>
-             <Item>
-                <element>
-                   <CountryCode>99</CountryCode>
-                   <CountryName>dfhdsf df hgdfhfh</CountryName>
-                   <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
-                   <DecisionNumber>23-23-364</DecisionNumber>
-                   <EducationLevel>10</EducationLevel>
-                   <EducationLevelName>Bakalavriat</EducationLevelName>
-                   <Fullname>dfg sdgfdfsgfgdsfg</Fullname>
-                   <ICertificateNumber>sdfsdf</ICertificateNumber>
-                   <PIN>asfdsdfsdf</PIN>
-                   <SpecialtyCode>sdfsdf</SpecialtyCode>
-                   <SpecialtyName>Menecment</SpecialtyName>
-                   <TCertificateNumber>sdfsdf</TCertificateNumber>
-                   <UniversitetCode>sdfsdf</UniversitetCode>
-                   <UniversitetName>Ardahan sdfsdf</UniversitetName>
-                </element>
-             </Item>
-          </Applications>
-          <Status>
-             <Code>200</Code>
-             <Description>Uğurlu.</Description>
-          </Status>
-       </GetAppinfoByPINResponse>
+           <GetAppinfoByPINResult>
+              <Applications>
+                 <Item>
+                    <element>
+                       <CountryCode>99</CountryCode>
+                       <CountryName>dfhdsf df hgdfhfh</CountryName>
+                       <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
+                       <DecisionNumber>23-23-364</DecisionNumber>
+                       <EducationLevel>10</EducationLevel>
+                       <EducationLevelName>Bakalavriat</EducationLevelName>
+                       <Fullname>dfg sdgfdfsgfgdsfg</Fullname>
+                       <ICertificateNumber>sdfsdf</ICertificateNumber>
+                       <PIN>asfdsdfsdf</PIN>
+                       <SpecialtyCode>sdfsdf</SpecialtyCode>
+                       <SpecialtyName>Menecment</SpecialtyName>
+                       <TCertificateNumber>sdfsdf</TCertificateNumber>
+                       <UniversitetCode>sdfsdf</UniversitetCode>
+                       <UniversitetName>Ardahan sdfsdf</UniversitetName>
+                    </element>
+                 </Item>
+              </Applications>
+              <Status>
+                 <Code>200</Code>
+                 <Description>Uğurlu.</Description>
+              </Status>
+            </GetAppinfoByPINResult>
+          </GetAppinfoByPINResponse>
        </soapenv:Body>
     </soapenv:Envelope>""", mimetype="text/xml")
 
