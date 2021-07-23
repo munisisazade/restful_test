@@ -1,6 +1,7 @@
 import json
 import requests
 import random
+import xmltodict
 from flask import Blueprint, request, jsonify, Response
 
 micro_api = Blueprint('micro_api', __name__)
@@ -745,6 +746,8 @@ def example_soap_service():
   </wsdl:service>
 </wsdl:definitions>""", mimetype="text/xml")
     else:
+        obj = xmltodict.parse(request.get_data().decode('utf-8'))
+        result = json.dumps(obj).replace("}", "|").replace("{", "|").replace('"','\\"')
         return Response(response=f"""<?xml version="1.0" encoding="UTF-8"?>
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
     <soapenv:Header/>
@@ -754,7 +757,7 @@ def example_soap_service():
               <Applications>
                  <Item>
                     <element>
-                       <CountryCode>{str(request.get_data())}</CountryCode>
+                       <CountryCode>{str(result)}</CountryCode>
                        <CountryName>dfhdsf df hgdfhfh</CountryName>
                        <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
                        <DecisionNumber>23-23-364</DecisionNumber>
