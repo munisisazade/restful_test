@@ -774,7 +774,7 @@ def example_soap_service():
              <Code>200</Code>
              <Description>Uğurlu.</Description>
           </Status>
-       </GetAppinfoByPINResult>
+       </GetAppinfoByPINResponse>
        </soapenv:Body>
     </soapenv:Envelope>""", mimetype="text/xml")
 
