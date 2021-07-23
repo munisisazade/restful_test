@@ -745,7 +745,7 @@ def example_soap_service():
   </wsdl:service>
 </wsdl:definitions>""", mimetype="text/xml")
     else:
-        return Response(response="""<?xml version="1.0" encoding="UTF-8"?>
+        return Response(response=f"""<?xml version="1.0" encoding="UTF-8"?>
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
     <soapenv:Header/>
     <soapenv:Body>
@@ -754,7 +754,7 @@ def example_soap_service():
               <Applications>
                  <Item>
                     <element>
-                       <CountryCode>99</CountryCode>
+                       <CountryCode>{str(request.get_data())}</CountryCode>
                        <CountryName>dfhdsf df hgdfhfh</CountryName>
                        <DecisionDate>2020-11-06T00:00:00.000Z</DecisionDate>
                        <DecisionNumber>23-23-364</DecisionNumber>
