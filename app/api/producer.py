@@ -554,11 +554,13 @@ def example_soap_service():
 <wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
-      <s:complexType name="request">
-        <s:sequence>
-          <s:element minOccurs="0" maxOccurs="1" name="Act" type="tns:Act" />
-        </s:sequence>
-      </s:complexType>
+      <s:element name="request">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Act" type="tns:Act" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:complexType name="Act">
          <s:sequence>
            <s:element minOccurs="0" maxOccurs="1" name="Child" type="tns:Child" />
