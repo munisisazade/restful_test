@@ -19,6 +19,37 @@ def rest_body_example():
     }
 
 
+@micro_api.route('/api/v1/response/<res_type>')
+def get_response_type(res_type):
+    if res_type == "normal":
+        return {
+            "name": "test",
+            "surname": "testov"
+        }
+    elif res_type == "object":
+        return {
+            "object": {
+                "name": "Name"
+            }
+        }
+    elif res_type == "array":
+        return {
+            "object": [{
+                "name": "Name"
+            }]
+        }
+    else:
+        return {
+            "object": {
+                "array": [
+                    {
+                        "test": "cool"
+                    }
+                ]
+            }
+        }
+
+
 @micro_api.route('/api/v1/babat/service/<id>', methods=['POST'])
 def rest_babat_service(id):
     body = str(request.data)
@@ -542,6 +573,7 @@ def example_four():
 def example_five():
     pass
 
+
 @micro_api.route('/api/v1/fake/json', methods=['GET'])
 def fake_json_response():
     data = "{\"title\":\"Internal Server Error\",\"detail\":\"\\n### Error updating database.  Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: unique constraint (SYSTEM.JOY_INFO_LOG_REQUEST_ID_IDX) violated\\n\\n### The error may exist in az/com/cybernet/integ/domain/mapper/permit/JoyInfoMapper.java (best guess)\\n### The error may involve az.com.cybernet.integ.domain.mapper.permit.JoyInfoMapper.insertJoyInfoLog-Inline\\n### The error occurred while setting parameters\\n### SQL: INSERT INTO WS.JOY_INFO_LOG (OID, INSERT_TIME, REQUEST_ID, INFO_COUNT) VALUES(?, TO_CHAR(SYSDATE, 'yyyymmddhh24miss'), ?, ?)\\n### Cause: java.sql.SQLIntegrityConstraintViolationException: ORA-00001: unique constraint (SYSTEM.JOY_INFO_LOG_REQUEST_ID_IDX) violated\\n\\n; ORA-00001: unique constraint (SYSTEM.JOY_INFO_LOG_REQUEST_ID_IDX) violated\\n; nested exception is java.sql.SQLIntegrityConstraintViolationException: ORA-00001: unique constraint (SYSTEM.JOY_INFO_LOG_REQUEST_ID_IDX) violated\\n\",\"status\":500,\"invalidParams\":[],\"traceId\":\"a002ce598951\"}"
@@ -747,7 +779,7 @@ def example_soap_service():
 </wsdl:definitions>""", mimetype="text/xml")
     else:
         obj = xmltodict.parse(request.get_data().decode('utf-8'))
-        result = json.dumps(obj).replace("}", "|").replace("{", "|").replace('"','\\"')
+        result = json.dumps(obj).replace("}", "|").replace("{", "|").replace('"', '\\"')
         return Response(response=f"""<?xml version="1.0" encoding="UTF-8"?>
     <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
     <soapenv:Header/>
@@ -782,7 +814,6 @@ def example_soap_service():
           </GetAppinfoByPINResponse>
        </soapenv:Body>
     </soapenv:Envelope>""", mimetype="text/xml")
-
 
 
 @micro_api.route('/api/v1/soap/error.asmx', methods=['GET', 'POST'])
