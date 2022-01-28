@@ -818,6 +818,7 @@ def example_soap_service():
     
 @micro_api.route('/v1/60adf176f442adc3d77877f4/<dynamic>', methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 def generate_dynamic_response(dynamic):
+    raise ValueError("Error")
     return jsonify({
        "name": "Success"
     })
