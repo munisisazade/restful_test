@@ -816,14 +816,14 @@ def example_soap_service():
     </soapenv:Envelope>""", mimetype="text/xml")
 
     
-@micro_api.route('/api/v1/60adf176f442adc3d77877f4/<dynamic>', methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
+@micro_api.route('/v1/60adf176f442adc3d77877f4/<dynamic>', methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 def generate_dynamic_response(dynamic):
     return jsonify({
        "name": "Success"
     })
 
 
-@micro_api.route('/v1/soap/error.asmx', methods=['GET', 'POST'])
+@micro_api.route('/api/v1/soap/error.asmx', methods=['GET', 'POST'])
 def example_soap_error():
     return Response(response="""<env:Envelope xmlns:env="http://www.w3.org/2003/05/soap-envelope">
         <env:Body>
