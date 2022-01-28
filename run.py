@@ -2,12 +2,14 @@ import os
 import traceback
 
 from flask import request, jsonify
+from flask_cors import CORS
 from app import create_app
 from app.utils import PageNotFound, MethodNotAllowed, Error
 from app.utils.logger import log
 from app.api.producer import micro_api
 
 app = create_app()
+CORS(app)
 
 app.register_blueprint(micro_api)
 
