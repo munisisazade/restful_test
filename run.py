@@ -14,7 +14,7 @@ CORS(app)
 app.register_blueprint(micro_api)
 
 
-# error handling
+# error handlings
 @app.errorhandler(404)
 def page_not_found(e):
     if request.headers.getlist("X-Forwarded-For"):
